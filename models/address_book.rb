@@ -1,12 +1,9 @@
-require_relative "entry.rb"
-require "csv"
+require_relative 'entry'
+require 'csv'
+require 'bloc_record/base'
 
-class AddressBook
+class AddressBook < BlocRecord::Base
   attr_accessor :entries
-
-  def initialize
-    @entries = []
-  end
 
   def add_entry(name, phone, email)
     index = 0
@@ -36,7 +33,7 @@ class AddressBook
      while lower <= upper
        mid = (lower + upper) / 2
        mid_name = entries[mid].name
- 
+
        if name == mid_name
          return entries[mid]
        elsif name < mid_name
